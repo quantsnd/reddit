@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi import HTTPException
 
+
 app = FastAPI()
 
 # Dataframe and return data
