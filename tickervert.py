@@ -17,10 +17,7 @@ all_tickers = set()
 for item in tickerz:
     all_tickers.update(item)
 
-def s(str):
-    return str.strip()
-
-all_tickers = set(map(s, all_tickers))
+all_tickers = set(map(lambda x: x.strip(), all_tickers))
 print(all_tickers)
 
 with open("tickers.txt","w") as f:
