@@ -3,6 +3,7 @@ from fastapi import HTTPException
 
 app = FastAPI()
 
+
 # Dataframe and return data
 redditFrame = []
 nFrames = 0
