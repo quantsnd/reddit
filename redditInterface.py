@@ -50,7 +50,7 @@ def add_post(subreddit_id: int, post: str, post_metadata: str):
 
 
 @app.get("/subreddits/{subreddit_id}")
-def read_song(subreddit_id: int):
+def read_subreddit(subreddit_id: int):
     global redditFrame
     index = search_by_subreddit_id(subreddit_id)
     subreddit = redditFrame[index]
@@ -60,7 +60,7 @@ def read_song(subreddit_id: int):
 
 
 @app.get("/subreddits/{subreddit_id}/posts/{post_id}")
-def read_song_title(subreddit_id: int, post_id: int):
+def read_post(subreddit_id: int, post_id: int):
     global redditFrame
     subredditIndex = search_by_subreddit_id(subreddit_id)
     subreddit = redditFrame[subredditIndex]
@@ -70,13 +70,13 @@ def read_song_title(subreddit_id: int, post_id: int):
 
 
 @app.delete("/subreddits/{subreddit_id}", status_code=200)
-def delete_song(subreddit_id: int):
+def delete_subreddit(subreddit_id: int):
     global redditFrame
     redditFrame.pop(search_by_subreddit_id(subreddit_id))
 
 
 @app.delete("/subreddits/{subreddit_id}/posts/{post_id}", status_code=200)
-def delete_song(subreddit_id: int, post_id: int):
+def delete_post(subreddit_id: int, post_id: int):
     global redditFrame
     postIndex = search_by_post_id(subreddit_id, post_id)
     redditFrame[subreddit_id]['Posts'].pop(postIndex)
