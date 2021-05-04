@@ -12,4 +12,4 @@ now = dt.datetime.today().replace(hour = 0, minute = 0, second = 0, microsecond 
 yesterday = now - dt.timedelta(days = 1)
 
 
-r.updateAll(dt.datetime(2016,3,1))
+r.updateAll(dt.datetime(2016,6,1))
