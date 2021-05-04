@@ -185,17 +185,17 @@ class redditdb:
     def loadRangeAll(self, start: dt.datetime, end: dt.datetime):
         return self.loadRangeComments(start, end), self.loadRangePosts(start, end)
 
-    # return a dictionary { dt.datetime : df }
+    # return the combined dataframe
     def loadRangeComments(self, start: dt.datetime, end: dt.datetime):
-        dfdict = {}
+        dfout = pd.DataFrame()
         for i in range( int( (end-start).days ) + 1):
             day = start + dt.timedelta(days = i)
             df = self.loadDayComments(day)
             
             if not df.empty:
-                dfdict[day] = df
+                dfout = dfout.append(df)
         
-        return dfdict
+        return dfout
 
     # return the combined dataframe
     def loadRangePosts(self, start: dt.datetime, end: dt.datetime):
@@ -205,7 +205,7 @@ class redditdb:
             df = self.loadDayPosts(day)
             
             if not df.empty:
-                dfout.append(df)
+                dfout = dfout.append(df)
         
         return dfout
         
